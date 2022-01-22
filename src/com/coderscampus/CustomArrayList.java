@@ -45,7 +45,8 @@ public class CustomArrayList<T> implements CustomList<T> {
 	public T remove(int index) throws IndexOutOfBoundsException {
 		T removed = (T) items[index]; // tracks and returns the item being removed
 		if (index >= i) {
-			return (T) "Requested index is out of bounds";
+			ArrayIndexOutOfBoundsException IndexOutOfBounds = new ArrayIndexOutOfBoundsException("Index is out of bounds");
+			throw IndexOutOfBounds;
 		}
 		for (int j = index; j < i - 1; j++) { // begins the for loop at the index being removed and iterates through the
 												// rest of the loop

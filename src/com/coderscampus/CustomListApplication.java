@@ -13,5 +13,6 @@ public class CustomListApplication {
 		System.out.println("After removing index 40: ");
 		customList.remove(40);
 		System.out.println(customList.get(40));
+		
 }
 }
