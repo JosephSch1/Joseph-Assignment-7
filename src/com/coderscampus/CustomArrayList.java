@@ -38,6 +38,8 @@ public class CustomArrayList<T> implements CustomList<T> {
 
 	@Override
 	public T get(int index) throws IndexOutOfBoundsException {
+		if (index >= i)
+			throw new IndexOutOfBoundsException ("Requested index is out of bounds");
 		return (T) items[index];
 	}
 
