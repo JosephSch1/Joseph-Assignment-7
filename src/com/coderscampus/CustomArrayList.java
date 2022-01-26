@@ -6,7 +6,12 @@ public class CustomArrayList<T> implements CustomList<T> {
 
 	@Override
 	public boolean add(T item) {
-		return add(i, item);
+		if (i >= items.length) {
+			items = addSize();
+		}
+		items[i] = item;
+		i++;
+		return true;
 	}
 
 	public Object[] addSize() {
@@ -14,7 +19,13 @@ public class CustomArrayList<T> implements CustomList<T> {
 		for (int j = 0; j < i; j++) {
 			biggerArray[j] = items[j];
 		}
-		return biggerArray;
+		Object[] finalArray = new Object[items.length + 1];
+		for (int j = 0; j < biggerArray.length; j++) {
+			if (biggerArray[j] != null) {
+				finalArray[j] = biggerArray[j];
+			}
+		}
+		return finalArray;
 	}
 
 	@Override
@@ -26,11 +37,15 @@ public class CustomArrayList<T> implements CustomList<T> {
 			items = addSize();
 		}
 
-		for (int j = i - 1; j > i; j--) {
-			items[j + 1] = items[j];
-		}
-		items[index] = item;
+		Object[] addedItems = new Object[items.length];
+		for (int j = 0; j < index; j++)
+			addedItems[j] = items[j];
+		addedItems[index] = item;
+
+		for (int j = index + 1; j < items.length; j++)
+			addedItems[j] = items[j - 1];
 		i++;
+		items = addedItems;
 		return true;
 	}
 
@@ -42,7 +57,7 @@ public class CustomArrayList<T> implements CustomList<T> {
 	@Override
 	public T get(int index) throws IndexOutOfBoundsException {
 		if (index >= i)
-			throw new IndexOutOfBoundsException ("Requested index is out of bounds of the list");
+			throw new IndexOutOfBoundsException("Requested index is out of bounds of the list");
 		return (T) items[index];
 	}
 
@@ -50,15 +65,27 @@ public class CustomArrayList<T> implements CustomList<T> {
 	public T remove(int index) throws IndexOutOfBoundsException {
 		T removed = (T) items[index]; // tracks and returns the item being removed
 		if (index >= i) {
-			throw new IndexOutOfBoundsException ("Requested index is out of bounds of the list");
+			throw new IndexOutOfBoundsException("Requested index is out of bounds of the list");
 		}
-		for (int j = index; j < i - 1; j++) { // begins the for loop at the index being removed and iterates through the
-												// rest of the loop
-			items[j] = items[j + 1]; // rewrites the for loop, iterating over the index of the item we want to
-										// remove, without making it null
+
+		Object[] removedItems = new Object[items.length];
+
+		for (int j = 0; j < index; j++)
+			removedItems[j] = items[j];
+
+		for (int j = index; j < items.length - 1; j++)
+			removedItems[j] = items[j + 1];
+
+		Object[] finalItems = new Object[items.length - 1];
+
+		for (int j = 0; j < removedItems.length - 1; j++) {
+			if (removedItems[j] != null) {
+				finalItems[j] = removedItems[j];
+			}
 		}
-		i--; // keeps track of the size of the array after the removed item has been over
-				// written.
+
+		i--;
+		items = finalItems;
 		return removed;
 	}
 }

@@ -4,16 +4,14 @@ public class CustomListApplication {
 
 	public static void main(String[] args) {
 		CustomArrayList<Integer> customList = new CustomArrayList<>();
-
-		for (int i = 0; i < 50; i++) {
+		
+		for (int i = 0; i < 10; i++) {
 			customList.add(i);
 		}
-		
-		System.out.println("List size before removing items: " + customList.getSize());
-		System.out.println("Index 40 before invoking the remove method: " + customList.get(40));
-		customList.remove(40);
-		System.out.println("List size after removing items: " + customList.getSize());
-		System.out.println("Index 40 after invoking the remove method: " + customList.get(40));
-		
+		customList.remove(9);
+		customList.add(3,10000);
+		customList.add(10, 10000);
+		System.out.println(customList.getSize());
+
 	}
 }
