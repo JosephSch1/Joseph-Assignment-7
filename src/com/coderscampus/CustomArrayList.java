@@ -31,7 +31,7 @@ public class CustomArrayList<T> implements CustomList<T> {
 	@Override
 	public boolean add(int index, T item) throws IndexOutOfBoundsException {
 		if (index > i) {
-			throw new IndexOutOfBoundsException("Requested index is out of bounds of the list");
+			throw new IndexOutOfBoundsException("Requested index " + index + " is out of bounds of the list");
 		}
 		if (i == items.length) {
 			items = addSize();
@@ -63,10 +63,11 @@ public class CustomArrayList<T> implements CustomList<T> {
 
 	@Override
 	public T remove(int index) throws IndexOutOfBoundsException {
-		T removed = (T) items[index]; // tracks and returns the item being removed
 		if (index >= i) {
 			throw new IndexOutOfBoundsException("Requested index is out of bounds of the list");
 		}
+		
+		T removed = (T) items[index]; // tracks and returns the item being removed
 
 		Object[] removedItems = new Object[items.length];
 

@@ -8,10 +8,12 @@ public class CustomListApplication {
 		for (int i = 0; i < 10; i++) {
 			customList.add(i);
 		}
-		customList.remove(9);
-		customList.add(3, 10000);
-		customList.add(10, 10000);
+		System.out.println("Size of list before invoking remove method on index nine: ");
 		System.out.println(customList.getSize());
+		customList.remove(9);
+		System.out.println("Size of list after invoking remove method on index nine: ");
+		System.out.println(customList.getSize());
+	
 
 	}
 }
