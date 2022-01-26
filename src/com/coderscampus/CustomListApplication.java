@@ -9,7 +9,7 @@ public class CustomListApplication {
 			customList.add(i);
 		}
 		customList.remove(9);
-		customList.add(3,10000);
+		customList.add(3, 10000);
 		customList.add(10, 10000);
 		System.out.println(customList.getSize());
 
