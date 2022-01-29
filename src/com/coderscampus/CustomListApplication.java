@@ -13,7 +13,5 @@ public class CustomListApplication {
 		customList.remove(9);
 		System.out.println("Size of list after invoking remove method on index nine: ");
 		System.out.println(customList.getSize());
-	
-
 	}
 }

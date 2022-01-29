@@ -19,13 +19,7 @@ public class CustomArrayList<T> implements CustomList<T> {
 		for (int j = 0; j < i; j++) {
 			biggerArray[j] = items[j];
 		}
-		Object[] finalArray = new Object[items.length + 1];
-		for (int j = 0; j < biggerArray.length; j++) {
-			if (biggerArray[j] != null) {
-				finalArray[j] = biggerArray[j];
-			}
-		}
-		return finalArray;
+		return biggerArray;
 	}
 
 	@Override
