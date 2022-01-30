@@ -15,7 +15,7 @@ public class CustomArrayList<T> implements CustomList<T> {
 	}
 
 	public Object[] addSize() {
-		Object[] biggerArray = new Object[i * 2];
+		Object[] biggerArray = new Object[items.length * 2];
 		for (int j = 0; j < i; j++) {
 			biggerArray[j] = items[j];
 		}
@@ -71,16 +71,8 @@ public class CustomArrayList<T> implements CustomList<T> {
 		for (int j = index; j < items.length - 1; j++)
 			removedItems[j] = items[j + 1];
 
-		Object[] finalItems = new Object[items.length - 1];
-
-		for (int j = 0; j < removedItems.length - 1; j++) {
-			if (removedItems[j] != null) {
-				finalItems[j] = removedItems[j];
-			}
-		}
-
 		i--;
-		items = finalItems;
+		items = removedItems;
 		return removed;
 	}
 }
